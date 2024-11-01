@@ -198,6 +198,13 @@ void DesktopMultiWindowPlugin::HandleMethodCall(
     auto window_id = arguments->at(flutter::EncodableValue("windowId")).LongValue();
     MultiWindowManager::Instance()->SetInitBackgroundColor(window_id, arguments);
     return result->Success();
+  } else if (method_call.method_name() == "setAlwaysOnTop") {
+      auto *arguments = std::get_if<flutter::EncodableMap>(method_call.arguments());
+      auto window_id = arguments->at(flutter::EncodableValue("windowId")).LongValue();
+      auto isAlwaysOnTop = std::get<bool>(arguments->at(flutter::EncodableValue("isAlwaysOnTop")));
+      MultiWindowManager::Instance()->setAlwaysOnTop(window_id, isAlwaysOnTop);
+      result->Success();
+      return;
   }
   result->NotImplemented();
 }

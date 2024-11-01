@@ -40,6 +40,13 @@ class DesktopMultiWindow {
     return WindowControllerMainImpl(windowId!);
   }
 
+  /// Set the window always on top
+  /// [windowId] which window you want to set always on top.
+  /// [isAlwaysOnTop] whether set the window always on top or not.
+  static void setAlwaysOnTop(int windowId, bool isAlwaysOnTop) async {
+    await miltiWindowChannel.invokeMethod('setAlwaysOnTop', {'windowId' : windowId, "isAlwaysOnTop": isAlwaysOnTop});
+  }
+
   /// Invoke method on the isolate of the window.
   ///
   /// Need use [setMethodHandler] in the target window isolate to handle the

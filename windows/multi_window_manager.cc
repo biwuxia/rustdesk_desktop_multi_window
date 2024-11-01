@@ -285,3 +285,10 @@ void MultiWindowManager::SetInitBackgroundColor(int64_t id, const flutter::Encod
     return window->second->SetInitBackgroundColor(args);
   }
 }
+
+void MultiWindowManager::setAlwaysOnTop(int64_t id, bool isAlwaysOnTop) {
+    auto window = windows_.find(id);
+    if (window != windows_.end()) {
+        window->second->setAlwaysOnTop(isAlwaysOnTop);
+    }
+}

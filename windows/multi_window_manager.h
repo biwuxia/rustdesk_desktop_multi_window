@@ -72,6 +72,8 @@ class MultiWindowManager : public std::enable_shared_from_this<MultiWindowManage
 
   void StartResizing(int64_t id, const flutter::EncodableMap *params);
 
+  void setAlwaysOnTop(int64_t id, bool isAlwaysOnTop);
+
 private:
 
   std::map<int64_t, std::unique_ptr<BaseFlutterWindow>> windows_;

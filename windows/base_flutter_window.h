@@ -70,6 +70,8 @@ class BaseFlutterWindow {
 
   void ForceChildRefresh();
 
+  void setAlwaysOnTop(bool isAlwaysOnTop);
+
   std::string title_bar_style_ = "normal";
 
   virtual HWND GetWindowHandle() = 0;

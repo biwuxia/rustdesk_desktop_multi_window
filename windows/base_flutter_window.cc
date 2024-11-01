@@ -500,3 +500,11 @@ void BaseFlutterWindow::ForceChildRefresh() {
 }
 
 bool BaseFlutterWindow::IsFullscreen() { return g_is_window_fullscreen; }
+
+void BaseFlutterWindow::setAlwaysOnTop(bool isAlwaysOnTop) {
+    auto handle = GetWindowHandle();
+    if (!handle) {
+        return;
+    }
+    SetWindowPos(handle, isAlwaysOnTop ? HWND_TOPMOST : HWND_NOTOPMOST,0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
+}
