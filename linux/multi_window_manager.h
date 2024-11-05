@@ -75,6 +75,8 @@ class MultiWindowManager : public std::enable_shared_from_this<MultiWindowManage
 
   void SetPreventClose(int64_t id, bool setPreventClose);
 
+  void setAlwaysOnTop(int64_t id, bool setAlwaysOnTop);
+
   int64_t GetXID(int64_t id);
 
 private:

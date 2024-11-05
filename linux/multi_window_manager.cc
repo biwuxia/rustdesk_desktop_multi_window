@@ -348,3 +348,12 @@ bool MultiWindowManager::IsFullScreen(int64_t id) {
   }
   return false;
 }
+
+void MultiWindowManager::setAlwaysOnTop(int64_t id, bool setAlwaysOnTop) {
+    RLOCK_WINDOW;
+    auto window = windows_.find(id);
+    if (window != windows_.end()) {
+        window->second->setAlwaysOnTop(setAlwaysOnTop);
+    }
+    UNLOCK_WINDOW;
+}

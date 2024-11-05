@@ -377,3 +377,8 @@ bool BaseFlutterWindow::IsFullScreen() {
   GdkWindowState state = gdk_window_get_state(gtk_widget_get_window(GTK_WIDGET(window)));
   return state & GDK_WINDOW_STATE_FULLSCREEN;
 }
+
+void BaseFlutterWindow::setAlwaysOnTop(bool setAlwaysOnTop) {
+    auto window = GetWindow();
+    gtk_window_set_keep_above(window, TRUE);
+}

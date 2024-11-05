@@ -68,6 +68,8 @@ public:
 
   void UnblockButtonPress();
 
+  void setAlwaysOnTop(bool setAlwaysOnTop);
+
   int64_t GetXID();
 
   bool isDragging = false;

@@ -161,8 +161,14 @@ static void desktop_multi_window_plugin_handle_method_call(
     auto xid = MultiWindowManager::Instance()->GetXID(window_id);
     g_autoptr(FlValue) result = fl_value_new_int(xid);
     response = FL_METHOD_RESPONSE(fl_method_success_response_new(result));
+  } else if (g_strcmp0(method, "setAlwaysOnTop") == 0) {
+      auto *args = fl_method_call_get_args(method_call);
+      auto window_id = fl_value_get_int(fl_value_lookup_string(args, "windowId"));
+      auto isAlwaysOnTop = fl_value_get_bool(fl_value_lookup_string(args, "isAlwaysOnTop"));
+      MultiWindowManager::Instance()->setAlwaysOnTop(window_id, isAlwaysOnTop);
+      response = FL_METHOD_RESPONSE(fl_method_success_response_new(nullptr));
   } else {
-    response = FL_METHOD_RESPONSE(fl_method_not_implemented_response_new());
+      response = FL_METHOD_RESPONSE(fl_method_not_implemented_response_new());
   }
 
   fl_method_call_respond(method_call, response, nullptr);
